@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FallGame</string>
+    <string name="scoreboard_title">SCOREBOARD</string>
+    <string name="btn_text_highscore">HIGHSCORE</string>
+    <string name="btn_text_play">PLAY</string>
+    <string name="game_title">RockFall</string>
+    <string name="scrollview_description">scrollview</string>
 </resources>

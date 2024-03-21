@@ -1,15 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HighscoreFragment">
-    
-    <TextView
-        android:background="@color/white"
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="This is Highscore-Fragment" />
+        app:cardCornerRadius="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:fontFamily="@font/zcool_kuaile"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="@string/scoreboard_title"
+                android:textColor="@color/text_green"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tv_place1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:fontFamily="@font/zcool_kuaile"
+                android:padding="20dp"
+                android:text="1st"
+                android:textColor="@color/text_green"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tv_place2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:fontFamily="@font/zcool_kuaile"
+                android:padding="20dp"
+                android:text="2nd"
+                android:textColor="@color/text_green"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tv_place3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:fontFamily="@font/zcool_kuaile"
+                android:padding="20dp"
+                android:text="3rd"
+                android:textColor="@color/text_green"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </FrameLayout>

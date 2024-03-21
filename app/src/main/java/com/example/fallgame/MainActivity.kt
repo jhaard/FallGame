@@ -9,6 +9,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var isHighscoreShowing = false
+    private val keyText = "show_highscore"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +30,20 @@ class MainActivity : AppCompatActivity() {
                 fragment.replace(R.id.highscore_container, HighscoreFragment())
                 fragment.addToBackStack(null)
                 fragment.commit()
-            } else if (!isHighscoreShowing) {
+            } else {
                 supportFragmentManager.popBackStack()
             }
         }
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean(keyText, isHighscoreShowing)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        isHighscoreShowing = savedInstanceState.getBoolean(keyText)
+    }
+
 }
