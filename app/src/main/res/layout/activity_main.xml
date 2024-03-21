@@ -1,52 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:id="@+id/mainactivity_container">
+
+    <LinearLayout
+        android:id="@+id/linearlayout_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="40dp">
 
     <TextView
         android:id="@+id/game_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="50dp"
         android:text="RockFall"
+        android:layout_gravity="center"
         android:fontFamily="@font/zcool_kuaile"
         android:textColor="@color/red"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@id/btn_play"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="48sp" />
+
     <Button
         android:id="@+id/btn_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
         android:text="PLAY"
         android:backgroundTint="@color/red"
         android:fontFamily="@font/zcool_kuaile"
         android:textColor="@color/text_green"
         android:textSize="32sp"
-        android:elevation="2dp"
-        app:layout_constraintBottom_toTopOf="@id/btn_highscore"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/game_title" />
+        android:elevation="2dp" />
 
     <Button
         android:id="@+id/btn_highscore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="HIGHSCORE"
+        android:layout_gravity="center"
         android:backgroundTint="@color/red"
         android:fontFamily="@font/zcool_kuaile"
         android:textColor="@color/text_green"
         android:textSize="32sp"
-        android:elevation="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_play" />
+        android:elevation="2dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <FrameLayout
+            android:id="@+id/highscore_container"
+            android:layout_marginVertical="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"/>
+
+    </LinearLayout>
+
+</FrameLayout>
