@@ -15,7 +15,7 @@
         android:fontFamily="@font/zcool_kuaile"
         android:textColor="@color/red"
         android:textSize="48sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,9 +29,24 @@
         android:textColor="@color/text_green"
         android:textSize="32sp"
         android:elevation="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_highscore"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/game_title" />
+
+    <Button
+        android:id="@+id/btn_highscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HIGHSCORE"
+        android:backgroundTint="@color/red"
+        android:fontFamily="@font/zcool_kuaile"
+        android:textColor="@color/text_green"
+        android:textSize="32sp"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_play" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
