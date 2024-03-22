@@ -31,7 +31,7 @@ class Player(context: Context, posX: Float, posY: Float, size: Float, speed: Flo
     }
 
     override fun update() {
-        //TODO("Not yet implemented")
+        posY += vGravity
     }
 
 
