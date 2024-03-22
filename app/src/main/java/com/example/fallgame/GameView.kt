@@ -6,7 +6,7 @@ import android.view.SurfaceView
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback, Runnable {
     private val scene: SceneManager = SceneManager(holder)
-    private val level: Level2 = Level2()
+    private val level: Level1 = Level1()
 
 
     init {
