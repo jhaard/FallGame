@@ -7,6 +7,10 @@ open class Scene {
 
     }
 
+    open fun update(holder: SurfaceHolder) {
+
+    }
+
      open fun stop() {
 
     }
