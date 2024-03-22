@@ -7,11 +7,7 @@ open class Scene {
 
     }
 
-    open fun draw(holder: SurfaceHolder) {
-
-    }
-
-    open fun update() {
+    open fun update(holder: SurfaceHolder) {
 
     }
 

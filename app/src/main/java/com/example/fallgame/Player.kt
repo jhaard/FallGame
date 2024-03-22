@@ -31,7 +31,11 @@ class Player(context: Context, posX: Float, posY: Float, size: Float, speed: Flo
     }
 
     override fun update() {
-        posY += vGravity
+        if (posY < 1900) {
+            posY += vGravity
+        } else {
+            //posY -= vGravity
+        }
     }
 
 

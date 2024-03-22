@@ -7,34 +7,25 @@ import android.view.SurfaceView
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback, Runnable {
     private val scene: SceneManager = SceneManager(holder)
     private val level: Level1 = Level1(context)
-
+    private val gameHolder: SurfaceHolder? = holder
     private var thread: Thread? = null
     private var running = false
 
 
     init {
-        if (holder != null) {
-            holder?.addCallback(this)
-        }
+        gameHolder?.addCallback(this)
     }
 
     override fun surfaceCreated(holder: SurfaceHolder) {
-        scene.loadScene(level)
-        level.start(holder)
-        start()
-
     }
 
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
-        level.draw(holder)
+        scene.loadScene(level)
+        start()
     }
 
     override fun surfaceDestroyed(holder: SurfaceHolder) {
         stop()
-    }
-
-    private fun update() {
-        level.update()
     }
 
     private fun start() {
@@ -54,8 +45,8 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
 
     override fun run() {
         while (running) {
-            update()
-            //Must draw in thread to update position
+            level.update(gameHolder!!)
+            println(Thread.activeCount())
         }
     }
 }
