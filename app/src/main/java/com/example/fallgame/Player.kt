@@ -17,7 +17,7 @@ class Player(context: Context, posX: Float, posY: Float, size: Float, speed: Flo
         sizable.inSampleSize = 14
         bitmap = BitmapFactory.decodeResource(
             context.resources,
-            R.drawable.simple_icon_rockfall_400)
+            R.drawable.rockfall_player_400)
     }
     override fun bounds(bounds: Rect) {
         //TODO("Not yet implemented")
