@@ -6,7 +6,7 @@ import android.view.SurfaceView
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback, Runnable {
     private val scene: SceneManager = SceneManager(holder)
-    private val level: Level1 = Level1()
+    private val level: Level1 = Level1(context)
 
 
     init {
@@ -19,10 +19,11 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         scene.loadScene(level)
         level.start(holder)
 
+
     }
 
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
-
+        level.update(holder)
     }
 
     override fun surfaceDestroyed(holder: SurfaceHolder) {
