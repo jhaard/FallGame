@@ -20,4 +20,10 @@ class GameActivity : AppCompatActivity() {
         container.addView(gameView)
 
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        gameView.stop()
+
+    }
 }
