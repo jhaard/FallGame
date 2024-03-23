@@ -2,16 +2,10 @@ package com.example.fallgame
 
 import android.view.SurfaceHolder
 
-open class Scene {
-     open fun start(holder: SurfaceHolder) {
+abstract class Scene {
+    abstract fun start(holder: SurfaceHolder)
 
-    }
+    abstract fun update(holder: SurfaceHolder)
 
-    open fun update(holder: SurfaceHolder) {
-
-    }
-
-     open fun stop() {
-
-    }
+    abstract fun stop()
 }

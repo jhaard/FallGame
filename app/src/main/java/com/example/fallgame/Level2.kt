@@ -13,6 +13,10 @@ class Level2: Scene() {
         holder.unlockCanvasAndPost(canvas)
     }
 
+    override fun update(holder: SurfaceHolder) {
+
+    }
+
     override fun stop() {
 
     }
