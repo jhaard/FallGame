@@ -26,4 +26,9 @@ class GameActivity : AppCompatActivity() {
         gameView.stop()
 
     }
+
+    override fun onStop() {
+        super.onStop()
+        gameView.stop()
+    }
 }
