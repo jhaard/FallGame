@@ -37,7 +37,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     private fun stop() {
         running = false
         try {
-            thread?.join()
+            thread?.interrupt()
         } catch (e: InterruptedException) {
             e.printStackTrace()
         }
