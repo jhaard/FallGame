@@ -15,13 +15,14 @@ class Background(context: Context, posX: Float, posY: Float, size: Float) :
         sizable.inSampleSize = 14
         bitmap = BitmapFactory.decodeResource(
             context.resources,
-            R.drawable.test_background)
+            R.drawable.test_background
+        )
     }
+
     override fun draw(canvas: Canvas?) {
         val centerX = posX - bitmap.width / 2
         val centerY = posY - bitmap.height / 2
 
         canvas?.drawBitmap(bitmap, centerX, centerY, null)
-
     }
 }

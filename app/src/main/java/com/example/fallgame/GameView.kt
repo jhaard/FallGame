@@ -11,7 +11,6 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     private var thread: Thread? = null
     private var running = false
 
-
     init {
         gameHolder?.addCallback(this)
     }
@@ -34,7 +33,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         thread?.start()
     }
 
-     fun stop() {
+    fun stop() {
         running = false
         try {
             thread?.interrupt()

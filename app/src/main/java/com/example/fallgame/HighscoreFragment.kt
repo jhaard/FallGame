@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.fallgame.databinding.FragmentHighscoreBinding
 
-
 class HighscoreFragment : Fragment() {
     private lateinit var binding: FragmentHighscoreBinding
     override fun onCreateView(
@@ -18,6 +17,4 @@ class HighscoreFragment : Fragment() {
 
         return binding.root
     }
-
-
 }

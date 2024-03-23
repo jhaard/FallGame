@@ -14,7 +14,6 @@ class GameActivity : AppCompatActivity() {
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         gameView = GameView(this)
         val container = binding.root
         container.addView(gameView)
@@ -25,11 +24,6 @@ class GameActivity : AppCompatActivity() {
         super.onDestroy()
         gameView.stop()
 
-    }
-
-    override fun onStop() {
-        super.onStop()
-        gameView.stop()
     }
 
     override fun onPause() {
