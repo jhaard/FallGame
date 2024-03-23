@@ -31,8 +31,11 @@ class Player(context: Context, posX: Float, posY: Float, size: Float, speed: Flo
     }
 
     override fun update() {
-        //TODO("Not yet implemented")
+        if (posY <= 1900f) {
+            posY += vGravity
+            if(posY == 1900f) {
+                posY = 0f
+            }
+        }
     }
-
-
 }
