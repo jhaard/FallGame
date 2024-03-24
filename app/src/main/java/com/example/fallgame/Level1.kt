@@ -2,7 +2,6 @@ package com.example.fallgame
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.view.SurfaceHolder
 
 open class Level1(private val context: Context) : Scene() {
@@ -12,21 +11,20 @@ open class Level1(private val context: Context) : Scene() {
     override fun start(holder: SurfaceHolder) {
         player = Player(
             context, holder.surfaceFrame.width().toFloat() / 2,
-            0f, 100f, 0f, 5f
+            500f, 100f, 0f, 5f
         )
         background = Background(
-            context, holder.surfaceFrame.width().toFloat() / 2,
-            holder.surfaceFrame.height().toFloat() / 2, 0f
+            context, 0f,
+            0f, 0f, 0f, 10f
         )
     }
 
     override fun update(holder: SurfaceHolder) {
         val canvas: Canvas? = holder.lockCanvas()
-        player.update()
         background.draw(canvas)
+        background.update()
         player.draw(canvas)
         holder.unlockCanvasAndPost(canvas)
-
     }
 
     override fun stop() {
