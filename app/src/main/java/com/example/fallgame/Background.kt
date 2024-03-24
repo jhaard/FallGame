@@ -7,7 +7,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Rect
 
-class Background(val context: Context, posX: Float, posY: Float, size: Float, speed: Float,
+class Background(context: Context, posX: Float, posY: Float, size: Float, speed: Float,
                  vGravity: Float
 ) :
     DynamicBody(context, posX, posY, size, speed, vGravity) {
