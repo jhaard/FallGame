@@ -20,7 +20,6 @@ class Player(context: Context, posX: Float, posY: Float, size: Float, speed: Flo
             R.drawable.rockfall_player_400)
     }
     override fun bounds(bounds: Rect) {
-        //TODO("Not yet implemented")
     }
 
     override fun draw(canvas: Canvas?) {
