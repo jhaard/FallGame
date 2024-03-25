@@ -34,9 +34,14 @@ class Background(context: Context, posX: Float, posY: Float, size: Float, speed:
     }
 
     override fun update() {
+        val offset = getHeight()
         posY -= vGravity
-        if (posY < -getHeight()) {
-            posY = getHeight().toFloat()
+        if (posY < -offset) {
+            posY += offset
         }
+//        posY -= vGravity
+//        if (posY < -getHeight()) {
+//            posY = getHeight().toFloat()
+//        }
     }
 }
