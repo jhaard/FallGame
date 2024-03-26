@@ -1,6 +1,7 @@
 package com.example.fallgame
 
 import android.content.Context
+import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 
@@ -26,7 +27,14 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     override fun surfaceDestroyed(holder: SurfaceHolder) {
         stop()
     }
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        level.player.posX = event!!.x
+        if (event.x > width/2) {
+            println("Bigger than half the screen")
+        }
 
+        return true
+    }
     private fun start() {
         running = true
         thread = Thread(this)
@@ -45,7 +53,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     override fun run() {
         while (running) {
             level.update(gameHolder!!)
-            println(Thread.activeCount())
+            //println(Thread.activeCount())
         }
     }
 }

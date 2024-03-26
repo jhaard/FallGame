@@ -5,7 +5,7 @@ import android.graphics.Canvas
 import android.view.SurfaceHolder
 
 open class Level1(private val context: Context) : Scene() {
-    private lateinit var player: Player
+    lateinit var player: Player
     private lateinit var background: Background
 
     override fun start(holder: SurfaceHolder) {

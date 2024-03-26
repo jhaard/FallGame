@@ -12,7 +12,6 @@ class Player(context: Context, posX: Float, posY: Float, size: Float, speed: Flo
     private var bitmap: Bitmap
     private val sizable = BitmapFactory.Options()
 
-
     init {
         sizable.inSampleSize = 14
         bitmap = BitmapFactory.decodeResource(
