@@ -34,15 +34,14 @@ class Background(context: Context, posX: Float, posY: Float, size: Float, speed:
     }
 
     override fun draw(canvas: Canvas?) {
-
-
 //        println(imageHeight)
 //        println(getHeight())
 
-        for (i in 0..tiles.toInt()) {
-            posY = i*imageHeight.toFloat()
+//        for (i in 0..tiles.toInt()) {
+//            posY = i*imageHeight.toFloat()
+            canvas?.drawColor(0, android.graphics.PorterDuff.Mode.CLEAR)
             canvas?.drawBitmap(bitmap, posX, posY, null)
-        }
+//        }
 
     }
 
@@ -51,7 +50,6 @@ class Background(context: Context, posX: Float, posY: Float, size: Float, speed:
     }
 
     override fun update() {
-
 //        posY -= vGravity
 
 //        val offset = getHeight()
@@ -62,9 +60,10 @@ class Background(context: Context, posX: Float, posY: Float, size: Float, speed:
 
 
 //
-//        tiles -= vGravity
-//        if (posY < -getHeight()) {
-//            posY = getHeight().toFloat()
-//        }
+
+        posY -= vGravity
+        if (posY < -getHeight()) {
+            posY = getHeight().toFloat()
+        }
     }
 }
