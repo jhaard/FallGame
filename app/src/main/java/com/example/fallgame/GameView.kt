@@ -5,8 +5,10 @@ import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.widget.ImageButton
-import java.util.Timer
-import java.util.TimerTask
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback, Runnable {
     private val scene: SceneManager = SceneManager(holder)
@@ -14,7 +16,6 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     private val gameHolder: SurfaceHolder? = holder
     private var thread: Thread? = null
     private var running = false
-    private var timer: Timer? = null
 
     init {
         gameHolder?.addCallback(this)
@@ -41,36 +42,24 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     }
     fun onSlowButtonTouch(slowButton: ImageButton) {
         slowButton.setOnClickListener {
-            if (timer != null) {
-                timer?.cancel()
-                timer = null
+            slowButton.isEnabled = false // Inaktivera knappen när korutinen startar
+            GlobalScope.launch(Dispatchers.Main) {
+                level.background.vGravity = 2f
+                delay(2000)
+                slowButton.isEnabled = true
+                level.background.vGravity = 10f
             }
-            timer = Timer()
-            timer?.schedule(object : TimerTask() {
-                override fun run() {
-                    level.background.vGravity = 2f
-                }
-            }, 0, 1000)
-            Thread.sleep(2000)
-            timer?.cancel()
-            level.background.vGravity = 10f
         }
     }
     fun onFlashButtonTouch(flashButton: ImageButton) {
         flashButton.setOnClickListener {
-            if (timer != null) {
-                timer?.cancel()
-                timer = null
+            flashButton.isEnabled = false // Inaktivera knappen när korutinen startar
+            GlobalScope.launch(Dispatchers.Main) {
+                level.background.vGravity = 120f
+                delay(150)
+                flashButton.isEnabled = true
+                level.background.vGravity = 10f
             }
-            timer = Timer()
-            timer?.schedule(object : TimerTask() {
-                override fun run() {
-                    level.background.vGravity = 25f
-                }
-            }, 0, 1000)
-            Thread.sleep(2000)
-            timer?.cancel()
-            level.background.vGravity = 10f
         }
     }
     private fun start() {
@@ -87,7 +76,6 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
             e.printStackTrace()
         }
     }
-
     override fun run() {
         while (running) {
             level.update(gameHolder!!)
