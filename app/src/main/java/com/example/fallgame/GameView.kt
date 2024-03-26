@@ -35,9 +35,6 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
 
         return true
     }
-
-
-
     private fun start() {
         running = true
         thread = Thread(this)
