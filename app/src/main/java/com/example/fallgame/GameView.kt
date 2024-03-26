@@ -39,12 +39,14 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     }
     fun onSlowButtonTouch(slowButton: ImageButton) {
         slowButton.setOnClickListener {
+            level.background.vGravity = 2f
             println("Slow-button pressed")
             Toast.makeText(context, "SLOW", Toast.LENGTH_SHORT).show()
         }
     }
     fun onFlashButtonTouch(flashButton: ImageButton) {
         flashButton.setOnClickListener {
+            level.background.vGravity = 25f
             println("Flash-button pressed")
             Toast.makeText(context, "FlASH", Toast.LENGTH_SHORT).show()
         }
