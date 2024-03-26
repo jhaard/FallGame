@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.widget.ImageButton
+import android.widget.Toast
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback, Runnable {
     private val scene: SceneManager = SceneManager(holder)
@@ -34,6 +36,18 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         }
 
         return true
+    }
+    fun onSlowButtonTouch(slowButton: ImageButton) {
+        slowButton.setOnClickListener {
+            println("Slow-button pressed")
+            Toast.makeText(context, "SLOW", Toast.LENGTH_SHORT).show()
+        }
+    }
+    fun onFlashButtonTouch(flashButton: ImageButton) {
+        flashButton.setOnClickListener {
+            println("Flash-button pressed")
+            Toast.makeText(context, "FlASH", Toast.LENGTH_SHORT).show()
+        }
     }
     private fun start() {
         running = true
