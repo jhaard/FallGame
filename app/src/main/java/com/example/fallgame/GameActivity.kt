@@ -2,6 +2,7 @@ package com.example.fallgame
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.FrameLayout
 import com.example.fallgame.databinding.ActivityGameBinding
 
 class GameActivity : AppCompatActivity() {
@@ -14,8 +15,9 @@ class GameActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         gameView = GameView(this)
-        val container = binding.root
-        container.addView(gameView)
+
+        val frameLayoutContainer: FrameLayout = binding.root.findViewById(R.id.sv_frame)
+        frameLayoutContainer.addView(gameView)
 
     }
 
