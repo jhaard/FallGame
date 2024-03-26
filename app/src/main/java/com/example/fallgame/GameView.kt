@@ -4,6 +4,11 @@ import android.content.Context
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.widget.ImageButton
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback, Runnable {
     private val scene: SceneManager = SceneManager(holder)
@@ -35,6 +40,28 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
 
         return true
     }
+    fun onSlowButtonTouch(slowButton: ImageButton) {
+        slowButton.setOnClickListener {
+            slowButton.isEnabled = false // Inaktivera knappen när korutinen startar
+            GlobalScope.launch(Dispatchers.Main) {
+                level.background.vGravity = 2f
+                delay(2000)
+                slowButton.isEnabled = true
+                level.background.vGravity = 10f
+            }
+        }
+    }
+    fun onFlashButtonTouch(flashButton: ImageButton) {
+        flashButton.setOnClickListener {
+            flashButton.isEnabled = false // Inaktivera knappen när korutinen startar
+            GlobalScope.launch(Dispatchers.Main) {
+                level.background.vGravity = 120f
+                delay(150)
+                flashButton.isEnabled = true
+                level.background.vGravity = 10f
+            }
+        }
+    }
     private fun start() {
         running = true
         thread = Thread(this)
@@ -49,11 +76,9 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
             e.printStackTrace()
         }
     }
-
     override fun run() {
         while (running) {
             level.update(gameHolder!!)
-            //println(Thread.activeCount())
         }
     }
 }
