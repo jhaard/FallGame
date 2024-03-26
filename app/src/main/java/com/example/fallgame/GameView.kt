@@ -56,7 +56,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
             flashButton.isEnabled = false // Inaktivera knappen när korutinen startar
             GlobalScope.launch(Dispatchers.Main) {
                 level.background.vGravity = 120f
-                delay(150)
+                delay(100)
                 flashButton.isEnabled = true
                 level.background.vGravity = 10f
             }
