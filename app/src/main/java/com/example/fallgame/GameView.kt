@@ -37,12 +37,11 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         if (event.x > width/2) {
             println("Bigger than half the screen")
         }
-
         return true
     }
     fun onSlowButtonTouch(slowButton: ImageButton) {
         slowButton.setOnClickListener {
-            slowButton.isEnabled = false // Inaktivera knappen när korutinen startar
+            slowButton.isEnabled = false
             GlobalScope.launch(Dispatchers.Main) {
                 level.background.vGravity = 2f
                 delay(2000)
@@ -53,7 +52,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     }
     fun onFlashButtonTouch(flashButton: ImageButton) {
         flashButton.setOnClickListener {
-            flashButton.isEnabled = false // Inaktivera knappen när korutinen startar
+            flashButton.isEnabled = false
             GlobalScope.launch(Dispatchers.Main) {
                 level.background.vGravity = 120f
                 delay(80)
