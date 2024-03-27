@@ -33,7 +33,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         stop()
     }
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        val offset = 150
+        val offset = 200
         val leftX = level.player.posX - offset
         val rightX = level.player.posX + offset
         if(event!!.x > leftX && event!!.x < rightX) {
