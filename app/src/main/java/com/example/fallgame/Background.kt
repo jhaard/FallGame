@@ -19,12 +19,12 @@ class Background(context: Context, posX: Float, posY: Float, size: Float, speed:
         sizable.inSampleSize = 10
         bitmap = BitmapFactory.decodeResource(
             context.resources,
-            R.drawable.new_test_background
+            R.drawable.new_test_background1
         )
         bitmapList = listOf(
-            BitmapFactory.decodeResource(context.resources, R.drawable.new_test_background),
-            BitmapFactory.decodeResource(context.resources, R.drawable.new_test_background),
-            BitmapFactory.decodeResource(context.resources, R.drawable.new_test_background))
+            BitmapFactory.decodeResource(context.resources, R.drawable.new_test_background1),
+            BitmapFactory.decodeResource(context.resources, R.drawable.new_test_background1),
+            BitmapFactory.decodeResource(context.resources, R.drawable.new_test_background1))
     }
     override fun bounds(bounds: Rect) {
     }
