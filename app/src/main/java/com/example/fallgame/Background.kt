@@ -16,14 +16,19 @@ class Background(context: Context, posX: Float, posY: Float, size: Float, speed:
     DynamicBody(context, posX, posY, size, speed, vGravity) {
 
     private var bitmap: Bitmap
+    private var bitmap2: Bitmap
     private val sizable = BitmapFactory.Options()
 
     private var tiles: Double
     private val imageHeight: Int
 
     init {
-//        sizable.inSampleSize = 10
+        sizable.inSampleSize = 10
         bitmap = BitmapFactory.decodeResource(
+            context.resources,
+            R.drawable.test_background4
+        )
+        bitmap2 = BitmapFactory.decodeResource(
             context.resources,
             R.drawable.test_background4
         )
@@ -34,15 +39,11 @@ class Background(context: Context, posX: Float, posY: Float, size: Float, speed:
     }
 
     override fun draw(canvas: Canvas?) {
-//        println(imageHeight)
-//        println(getHeight())
-
-//        for (i in 0..tiles.toInt()) {
-//            posY = i*imageHeight.toFloat()
-            canvas?.drawColor(0, android.graphics.PorterDuff.Mode.CLEAR)
-            canvas?.drawBitmap(bitmap, posX, posY, null)
-//        }
-
+        canvas?.drawBitmap(bitmap, posX, posY, null)
+        canvas?.drawBitmap(bitmap2, posX, posY + bitmap.height, null)
+        if (bitmap.height < 0) {
+            canvas?.drawBitmap(bitmap, posX, posY + bitmap2.height, null)
+        }
     }
 
     private fun getHeight(): Int {
@@ -50,20 +51,10 @@ class Background(context: Context, posX: Float, posY: Float, size: Float, speed:
     }
 
     override fun update() {
-//        posY -= vGravity
-
-//        val offset = getHeight()
-//        tiles -= vGravity
-//        if (tiles < -offset) {
-//            tiles += offset
-//        }
-
-
-//
-
+        val offset = bitmap.height
         posY -= vGravity
-        if (posY < -getHeight()) {
-            posY = getHeight().toFloat()
+        if (posY < -offset) {
+            posY += offset
         }
     }
 }

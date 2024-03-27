@@ -15,7 +15,7 @@ open class Level1(private val context: Context) : Scene() {
         )
         background = Background(
             context, 0f,
-            0f, 0f, 0f, 10f
+            0f, 0f, 0f, 15f
         )
     }
 
