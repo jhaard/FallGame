@@ -47,7 +47,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
                 level.background.vGravity = 2f
                 delay(2000)
                 slowButton.isEnabled = true
-                level.background.vGravity = 10f
+                level.background.vGravity = 15f
             }
         }
     }
@@ -58,7 +58,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
                 level.background.vGravity = 120f
                 delay(80)
                 flashButton.isEnabled = true
-                level.background.vGravity = 10f
+                level.background.vGravity = 15f
             }
         }
     }
