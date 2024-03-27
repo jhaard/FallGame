@@ -33,9 +33,11 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         stop()
     }
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        level.player.posX = event!!.x
-        if (event.x > width/2) {
-            println("Bigger than half the screen")
+        val offset = 150
+        val leftX = level.player.posX - offset
+        val rightX = level.player.posX + offset
+        if(event!!.x > leftX && event!!.x < rightX) {
+            level.player.posX = event.x
         }
         return true
     }
