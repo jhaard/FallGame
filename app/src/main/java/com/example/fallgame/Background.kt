@@ -5,22 +5,15 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
 import android.graphics.Rect
-import kotlin.math.ceil
 
 class Background(context: Context, posX: Float, posY: Float, size: Float, speed: Float,
                  vGravity: Float
 ) :
     DynamicBody(context, posX, posY, size, speed, vGravity) {
-
     private var bitmap: Bitmap
-    private var bitmap2: Bitmap
+    private val bitmapList: List<Bitmap>
     private val sizable = BitmapFactory.Options()
-
-    private var tiles: Double
-    private val imageHeight: Int
 
     init {
         sizable.inSampleSize = 10
@@ -28,25 +21,20 @@ class Background(context: Context, posX: Float, posY: Float, size: Float, speed:
             context.resources,
             R.drawable.test_background4
         )
-        bitmap2 = BitmapFactory.decodeResource(
-            context.resources,
-            R.drawable.test_background4
-        )
-        imageHeight = bitmap.height
-        tiles = ceil((getHeight() / imageHeight).toDouble())
+        bitmapList = listOf(
+            BitmapFactory.decodeResource(context.resources, R.drawable.test_background4),
+            BitmapFactory.decodeResource(context.resources, R.drawable.test_background4),
+            BitmapFactory.decodeResource(context.resources, R.drawable.test_background4))
     }
     override fun bounds(bounds: Rect) {
     }
 
     override fun draw(canvas: Canvas?) {
-        canvas?.drawBitmap(bitmap, posX, posY, null)
-        canvas?.drawBitmap(bitmap2, posX, posY + bitmap.height, null)
-        if (bitmap.height < 0) {
-            canvas?.drawBitmap(bitmap, posX, posY + bitmap2.height, null)
+        for (i in 0..bitmapList.size) {
+            canvas?.drawBitmap(bitmap, posX, posY+bitmap.height*i, null)
         }
     }
-
-    private fun getHeight(): Int {
+    private fun getPixelHeight(): Int {
         return Resources.getSystem().displayMetrics.heightPixels
     }
 
