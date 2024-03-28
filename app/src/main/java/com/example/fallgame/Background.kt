@@ -11,37 +11,38 @@ class Background(context: Context, posX: Float, posY: Float, size: Float, speed:
                  vGravity: Float
 ) :
     DynamicBody(context, posX, posY, size, speed, vGravity) {
-
     private var bitmap: Bitmap
+    private val bitmapList: List<Bitmap>
     private val sizable = BitmapFactory.Options()
 
     init {
-        sizable.inSampleSize = 14
+        sizable.inSampleSize = 10
         bitmap = BitmapFactory.decodeResource(
             context.resources,
-            R.drawable.test_background4
+            R.drawable.test_background
         )
+        bitmapList = listOf(
+            BitmapFactory.decodeResource(context.resources, R.drawable.test_background),
+            BitmapFactory.decodeResource(context.resources, R.drawable.test_background),
+            BitmapFactory.decodeResource(context.resources, R.drawable.test_background))
     }
     override fun bounds(bounds: Rect) {
     }
 
     override fun draw(canvas: Canvas?) {
-        canvas?.drawBitmap(bitmap, posX, posY, null)
+        for (i in 0..bitmapList.size) {
+            canvas?.drawBitmap(bitmap, posX, posY+bitmap.height*i, null)
+        }
     }
-
-    private fun getHeight(): Int {
+    private fun getPixelHeight(): Int {
         return Resources.getSystem().displayMetrics.heightPixels
     }
 
     override fun update() {
-        val offset = getHeight()
+        val offset = bitmap.height
         posY -= vGravity
         if (posY < -offset) {
             posY += offset
         }
-//        posY -= vGravity
-//        if (posY < -getHeight()) {
-//            posY = getHeight().toFloat()
-//        }
     }
 }

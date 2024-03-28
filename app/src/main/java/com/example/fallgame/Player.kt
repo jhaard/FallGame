@@ -16,7 +16,7 @@ class Player(context: Context, posX: Float, posY: Float, size: Float, speed: Flo
         sizable.inSampleSize = 14
         bitmap = BitmapFactory.decodeResource(
             context.resources,
-            R.drawable.rockfall_player_400)
+            R.drawable.test_1_rockfall_player_400)
     }
     override fun bounds(bounds: Rect) {
     }

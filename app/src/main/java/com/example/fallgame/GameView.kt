@@ -33,32 +33,33 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         stop()
     }
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        level.player.posX = event!!.x
-        if (event.x > width/2) {
-            println("Bigger than half the screen")
+        val offset = 200
+        val leftX = level.player.posX - offset
+        val rightX = level.player.posX + offset
+        if(event!!.x > leftX && event!!.x < rightX) {
+            level.player.posX = event.x
         }
-
         return true
     }
     fun onSlowButtonTouch(slowButton: ImageButton) {
         slowButton.setOnClickListener {
-            slowButton.isEnabled = false // Inaktivera knappen när korutinen startar
+            slowButton.isEnabled = false
             GlobalScope.launch(Dispatchers.Main) {
                 level.background.vGravity = 2f
                 delay(2000)
                 slowButton.isEnabled = true
-                level.background.vGravity = 10f
+                level.background.vGravity = 15f
             }
         }
     }
     fun onFlashButtonTouch(flashButton: ImageButton) {
         flashButton.setOnClickListener {
-            flashButton.isEnabled = false // Inaktivera knappen när korutinen startar
+            flashButton.isEnabled = false
             GlobalScope.launch(Dispatchers.Main) {
                 level.background.vGravity = 120f
-                delay(100)
+                delay(80)
                 flashButton.isEnabled = true
-                level.background.vGravity = 10f
+                level.background.vGravity = 15f
             }
         }
     }

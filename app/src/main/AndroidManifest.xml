@@ -6,9 +6,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/simple_icon_rockfall_400"
+        android:icon="@drawable/simple_icon_rockfall_800"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/simple_icon_rockfall_400"
+        android:roundIcon="@drawable/simple_icon_rockfall_800"
         android:supportsRtl="true"
         android:theme="@style/Theme.FallGame"
         tools:targetApi="31">
