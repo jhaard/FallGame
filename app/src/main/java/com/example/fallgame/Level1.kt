@@ -5,9 +5,9 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.view.SurfaceHolder
 
-open class Level1(private val context: Context) : Scene() {
-    lateinit var player: Player
-    lateinit var background: Background
+class Level1(private val context: Context) : Scene() {
+    override lateinit var player: Player
+    override lateinit var background: Background
     private val playerSize = BitmapFactory.Options()
 
     init {
