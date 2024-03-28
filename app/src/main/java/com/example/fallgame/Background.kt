@@ -3,28 +3,17 @@ package com.example.fallgame
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Rect
 
-class Background(context: Context, posX: Float, posY: Float, size: Float, speed: Float,
-                 vGravity: Float
-) :
-    DynamicBody(context, posX, posY, size, speed, vGravity) {
-    private var bitmap: Bitmap
+class Background(context: Context, bitmap: Bitmap, posX: Float, posY: Float,
+                 vGravity: Float) :
+    DynamicBody(context, bitmap, posX, posY, vGravity) {
+
     private val bitmapList: List<Bitmap>
-    private val sizable = BitmapFactory.Options()
 
     init {
-        sizable.inSampleSize = 10
-        bitmap = BitmapFactory.decodeResource(
-            context.resources,
-            R.drawable.test_background
-        )
-        bitmapList = listOf(
-            BitmapFactory.decodeResource(context.resources, R.drawable.test_background),
-            BitmapFactory.decodeResource(context.resources, R.drawable.test_background),
-            BitmapFactory.decodeResource(context.resources, R.drawable.test_background))
+        bitmapList = listOf(bitmap, bitmap, bitmap)
     }
     override fun bounds(bounds: Rect) {
     }

@@ -12,12 +12,14 @@ import kotlinx.coroutines.launch
 
 class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback, Runnable {
     private val scene: SceneManager = SceneManager(holder)
-    private val level: Level1 = Level1(context)
+    private val levelList: List<Scene> = mutableListOf(Level1(context))
+    private val nextLevel: Int = 0
     private val gameHolder: SurfaceHolder? = holder
     private var thread: Thread? = null
     private var running = false
 
     init {
+        scene.loadNextScene(nextLevel)
         gameHolder?.addCallback(this)
     }
 
@@ -25,7 +27,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     }
 
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
-        scene.loadScene(level)
+        scene.loadScene(levelList)
         start()
     }
 
@@ -34,10 +36,10 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     }
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val offset = 200
-        val leftX = level.player.posX - offset
-        val rightX = level.player.posX + offset
+        val leftX = levelList[nextLevel].player.posX - offset
+        val rightX = levelList[nextLevel].player.posX + offset
         if(event!!.x > leftX && event!!.x < rightX) {
-            level.player.posX = event.x
+            levelList[nextLevel].player.posX = event.x
         }
         return true
     }
@@ -45,10 +47,10 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         slowButton.setOnClickListener {
             slowButton.isEnabled = false
             GlobalScope.launch(Dispatchers.Main) {
-                level.background.vGravity = 2f
+                levelList[nextLevel].background.vGravity = 2f
                 delay(2000)
                 slowButton.isEnabled = true
-                level.background.vGravity = 15f
+                levelList[nextLevel].background.vGravity = 15f
             }
         }
     }
@@ -56,10 +58,10 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         flashButton.setOnClickListener {
             flashButton.isEnabled = false
             GlobalScope.launch(Dispatchers.Main) {
-                level.background.vGravity = 120f
+                levelList[nextLevel].background.vGravity = 120f
                 delay(80)
                 flashButton.isEnabled = true
-                level.background.vGravity = 15f
+                levelList[nextLevel].background.vGravity = 15f
             }
         }
     }
@@ -79,7 +81,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     }
     override fun run() {
         while (running) {
-            level.update(gameHolder!!)
+            levelList[nextLevel].update(gameHolder!!)
         }
     }
 }
