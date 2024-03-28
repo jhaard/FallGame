@@ -3,40 +3,35 @@ package com.example.fallgame
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Rect
 
-class Background(context: Context, posX: Float, posY: Float, size: Float, speed: Float,
-                 vGravity: Float
-) :
-    DynamicBody(context, posX, posY, size, speed, vGravity) {
+class Background(context: Context, bitmap: Bitmap, posX: Float, posY: Float,
+                 vGravity: Float) :
+    DynamicBody(context, bitmap, posX, posY, vGravity) {
 
-    private var bitmap: Bitmap
-    private val sizable = BitmapFactory.Options()
+    private val bitmapList: List<Bitmap>
 
     init {
-        sizable.inSampleSize = 14
-        bitmap = BitmapFactory.decodeResource(
-            context.resources,
-            R.drawable.test_background4
-        )
+        bitmapList = listOf(bitmap, bitmap, bitmap)
     }
     override fun bounds(bounds: Rect) {
     }
 
     override fun draw(canvas: Canvas?) {
-        canvas?.drawBitmap(bitmap, posX, posY, null)
+        for (i in 0..bitmapList.size) {
+            canvas?.drawBitmap(bitmap, posX, posY+bitmap.height*i, null)
+        }
     }
-
-    private fun getHeight(): Int {
+    private fun getPixelHeight(): Int {
         return Resources.getSystem().displayMetrics.heightPixels
     }
 
     override fun update() {
+        val offset = bitmap.height
         posY -= vGravity
-        if (posY < -getHeight()) {
-            posY = getHeight().toFloat()
+        if (posY < -offset) {
+            posY += offset
         }
     }
 }
