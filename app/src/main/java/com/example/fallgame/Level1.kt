@@ -19,13 +19,13 @@ class Level1(private val context: Context) : Scene() {
             context,
             BitmapFactory.decodeResource(context.resources, R.drawable.test_1_rockfall_player_400, playerSize),
             holder.surfaceFrame.width().toFloat() / 2,
-            500f, 15f
+            500f, 0f
         )
         background = Background(
             context, BitmapFactory.decodeResource(
                 context.resources, R.drawable.test_background
             ), 0f,
-            0f, 15f)
+            0f, 20f)
     }
 
     override fun update(holder: SurfaceHolder) {
