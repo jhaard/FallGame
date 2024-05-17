@@ -34,7 +34,7 @@ class Level1(private val context: Context) : Scene() {
         enemy = Enemy(
             context,
             randomBitmap(),
-            if(side) 0f else holder.surfaceFrame.width().toFloat(),
+            if(side) -100f else holder.surfaceFrame.width().toFloat()+100f,
             randomHeight().toFloat(), 5f, 10f, side
         )
         background = Background(
