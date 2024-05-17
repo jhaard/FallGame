@@ -4,6 +4,7 @@ import android.view.SurfaceHolder
 
 abstract class Scene {
     abstract val player: Player
+    abstract val enemy: Enemy
     abstract val background: Background
     abstract fun start(holder: SurfaceHolder)
 
