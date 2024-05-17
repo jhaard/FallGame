@@ -5,7 +5,8 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
 
-class Enemy(context: Context, bitmap: Bitmap, posX: Float, posY: Float, vGravity: Float, speed: Float):
+class Enemy(context: Context, bitmap: Bitmap, posX: Float, posY: Float,
+            vGravity: Float, speed: Float, private var rightSide: Boolean):
     DynamicBody(context, bitmap,  posX, posY, vGravity, speed) {
     override fun bounds(bounds: Rect) {
 
@@ -19,8 +20,13 @@ class Enemy(context: Context, bitmap: Bitmap, posX: Float, posY: Float, vGravity
     }
 
     override fun update() {
-        posX += speed
-        posY += -vGravity
+        if (rightSide) {
+            posX += speed
+            posY += -vGravity
+        } else {
+            posX -= speed
+            posY += -vGravity
+        }
 
     }
 
