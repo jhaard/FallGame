@@ -22,19 +22,19 @@ class Level1(private val context: Context) : Scene() {
             context,
             BitmapFactory.decodeResource(context.resources, R.drawable.test_1_rockfall_player_400, playerSize),
             holder.surfaceFrame.width().toFloat() / 2,
-            500f, 0f
+            500f, 0f, 0f
         )
         enemy = Enemy(
             context,
             BitmapFactory.decodeResource(context.resources, R.drawable.enemy_paperplane_right_400, enemySize),
             holder.surfaceFrame.width().toFloat() / 2,
-            800f, 0f
+            800f, 0f, 5f
         )
         background = Background(
             context, BitmapFactory.decodeResource(
                 context.resources, R.drawable.test_background
             ), 0f,
-            0f, 20f)
+            0f, 20f, 0f)
     }
 
     override fun update(holder: SurfaceHolder) {
@@ -42,6 +42,7 @@ class Level1(private val context: Context) : Scene() {
         background.draw(canvas)
         background.update()
         player.draw(canvas)
+        enemy.update()
         enemy.draw(canvas)
         holder.unlockCanvasAndPost(canvas)
     }

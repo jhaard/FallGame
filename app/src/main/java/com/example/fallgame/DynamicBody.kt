@@ -7,7 +7,7 @@ import android.graphics.Rect
 
 abstract class DynamicBody(
     var context: Context, var bitmap: Bitmap, var posX: Float, var posY: Float,
-    var vGravity: Float) {
+    var vGravity: Float, var speed: Float) {
 
     abstract fun bounds(bounds: Rect)
     abstract fun draw(canvas: Canvas?)

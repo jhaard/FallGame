@@ -5,8 +5,8 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
 
-class Player(context: Context, bitmap: Bitmap, posX: Float, posY: Float, vGravity: Float):
-    DynamicBody(context, bitmap,  posX, posY, vGravity) {
+class Player(context: Context, bitmap: Bitmap, posX: Float, posY: Float, vGravity: Float, speed: Float):
+    DynamicBody(context, bitmap,  posX, posY, vGravity, speed) {
 
     override fun bounds(bounds: Rect) {
     }
