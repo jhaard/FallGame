@@ -27,8 +27,8 @@ class Level1(private val context: Context) : Scene() {
         enemy = Enemy(
             context,
             BitmapFactory.decodeResource(context.resources, R.drawable.enemy_paperplane_right_400, enemySize),
-            holder.surfaceFrame.width().toFloat() / 2,
-            800f, 0f, 5f
+            0f,
+            1100f, 5f, 10f
         )
         background = Background(
             context, BitmapFactory.decodeResource(

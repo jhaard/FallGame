@@ -20,6 +20,7 @@ class Enemy(context: Context, bitmap: Bitmap, posX: Float, posY: Float, vGravity
 
     override fun update() {
         posX += speed
+        posY += -vGravity
 
     }
 
